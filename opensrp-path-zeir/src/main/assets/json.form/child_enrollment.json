@@ -461,6 +461,74 @@
         "edit_type": "name"
       },
       {
+        "key": "sms_reminder",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "sms_reminder",
+        "entity_id": "mother",
+        "type": "spinner",
+        "hint": "{{child_enrollment.step1.sms_reminder.hint}}",
+        "options": [
+          {
+            "key": "no",
+            "text": "{{child_enrollment.step1.sms_reminder.options.no.text}}",
+            "openmrs_entity": "",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "yes",
+            "text": "{{child_enrollment.step1.sms_reminder.options.yes.text}}",
+            "openmrs_entity": "",
+            "openmrs_entity_id": ""
+          }
+        ]
+      },
+
+      {
+        "key": "sms_reminder_phone",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "sms_reminder_phone",
+        "entity_id": "mother",
+        "type": "edit_text",
+        "hint": "{{child_enrollment.step1.sms_reminder_phone.hint}}",
+        "v_numeric": {
+          "value": "true",
+          "err": "{{child_enrollment.step1.mother_guardian_number.v_numeric.err}}"
+        },
+        "v_regex": {
+          "value": "(0[0-9]{9})|\\s*",
+          "err": "{{child_enrollment.step1.mother_guardian_number.v_regex.err}}"
+        },
+        "v_required": {
+          "value": true,
+          "err": "{{child_enrollment.step1.home_facility.v_required.err}}"
+        },
+
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "child_register_registration_relevance_rules.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "sms_reminder_phone_formatted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "sms_reminder_phone_formatted",
+        "entity_id": "mother",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "child_register_registration_calculation_rules.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "chw_name",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

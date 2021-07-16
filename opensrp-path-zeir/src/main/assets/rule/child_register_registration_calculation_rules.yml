@@ -26,3 +26,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = step1_ga_at_birth < 37 && step1_Birth_Weight < 2.5 ? '1' : '0'"
+---
+name: step1_sms_reminder_phone_formatted
+description: This calculation add the country code to phone number.
+priority: 1
+condition: "step1_sms_reminder_phone != ''"
+actions:
+  - "calculation = step1_sms_reminder_phone.replaceFirst('0','+260')"

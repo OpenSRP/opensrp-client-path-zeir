@@ -163,6 +163,29 @@
           }
         },
         {
+          "column_name": "sms_reminder",
+          "type": "Client",
+          "json_mapping": {
+            "field": "attributes.sms_reminder"
+          }
+        },
+
+        {
+          "column_name": "sms_reminder_phone",
+          "type": "Client",
+          "json_mapping": {
+            "field": "attributes.sms_reminder_phone"
+          }
+        },
+
+        {
+          "column_name": "sms_reminder_phone_formatted",
+          "type": "Client",
+          "json_mapping": {
+            "field": "attributes.sms_reminder_phone_formatted"
+          }
+        },
+        {
           "column_name": "mother_guardian_number",
           "type": "Client",
           "json_mapping": {

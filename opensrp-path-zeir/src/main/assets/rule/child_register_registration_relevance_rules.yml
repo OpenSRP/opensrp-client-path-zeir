@@ -12,3 +12,10 @@ priority: 1
 condition: "step1_birth_facility_name == 'other'"
 actions:
   - "isRelevant = true"
+---
+name: step1_sms_reminder_phone
+description: sms_reminder_phone
+priority: 1
+condition: "step1_sms_reminder == 'yes'"
+actions:
+  - "isRelevant = true"
