@@ -100,7 +100,7 @@ public class ZeirRepository extends Repository {
 
         runLegacyUpgrades(database);
 
-        onUpgrade(database, 15, BuildConfig.DATABASE_VERSION);
+        onUpgrade(database,  BuildConfig.DATABASE_VERSION-1, BuildConfig.DATABASE_VERSION);
 
         // initialize from yml file
         ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
@@ -154,6 +154,9 @@ public class ZeirRepository extends Repository {
                     break;
                 case 16:
                     upgradeToVersion16(db);
+                    break;
+                case 17:
+                    upgradeToVersion17(db);
                     break;
                 default:
                     break;
@@ -446,5 +449,19 @@ public class ZeirRepository extends Repository {
         StockRepository.migrateAddInventoryColumns(db);
         StockTypeRepository.migrationAdditionalProductProperties(db);
         StockTypeRepository.migrationAddServerVersionColumn(db);
+    }
+
+    private void upgradeToVersion17(SQLiteDatabase db) {
+        try
+        {
+            db.execSQL("ALTER TABLE ec_mother_details ADD COLUMN sms_reminder VARCHAR NOT NULL DEFAULT ''");
+            db.execSQL("ALTER TABLE ec_mother_details ADD COLUMN sms_reminder_phone VARCHAR NOT NULL DEFAULT ''");
+            db.execSQL("ALTER TABLE ec_mother_details ADD COLUMN sms_reminder_phone_formatted VARCHAR NOT NULL DEFAULT ''");
+
+        }
+        catch (Exception e)
+        {
+            Timber.e("upgradeToVersion17 "+e.getMessage());
+        }
     }
 }
